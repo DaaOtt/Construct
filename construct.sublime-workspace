@@ -1,0 +1,444 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/html/js/menu/control.Servers.js",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/html/js/menu/TestServers.js",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/shared.lua",
+		"/C/Users/Ott/Documents/Double Action Thread.txt",
+		"/C/Users/Ott/Desktop/cough/autorun/infection.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/entities/computer_case.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/entities/computer_part_cover.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/lua/sample.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/lua/3d2dvgui.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/entities/computer_part.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/init.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/gmachines/lua/cl_init.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_case.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_soundcard.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_part.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_ram.lua",
+		"/D/Drive/cScripts/scripts/_cplayer.lua",
+		"/D/Drive/cScripts/scripts/aimbot.lua",
+		"/D/Drive/cScripts/docs/libraries_functionlist.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_hdd.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_cover.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_gpu.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_psu.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_diskdrive.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/computer_mobo.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/lua/entities/sent_ball.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/addons/pc/lua/entities/sent_ball.lua",
+		"/D/srcds/garrysmod/garrysmod/gamemodes/Jackass/gamemode/init.lua",
+		"/D/srcds/garrysmod/garrysmod/gamemodes/Jackass/gamemode/sh_multipliers.lua",
+		"/D/srcds/garrysmod/garrysmod/gamemodes/Jackass/gamemode/sh_sounds.lua",
+		"/D/srcds/garrysmod/garrysmod/gamemodes/Jackass/gamemode/cl_init.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/smoke.vmt",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/draft.vmt",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/roll.vmt",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/blunt.vmt",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/paper.vmt",
+		"/C/Users/Ott/Downloads/olly_victor.png",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/gamemodes/terrortown/entities/weapons/weapon_ttt_wtester.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/gamemodes/terrortown/entities/weapons/weapon_ttt_phammer.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/gamemodes/terrortown/entities/weapons/weapon_ttt_decoy.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/gamemodes/terrortown/entities/weapons/weapon_ttt_stungun.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/gamemodes/terrortown/entities/weapons/weapon_ttt_push.lua",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/dank.vmt",
+		"/D/SteamLibrary/SteamApps/common/GarrysMod/garrysmod/materials/spawnicons/models/w33d/hype.vmt"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\SteamLibrary\\SteamApps\\common\\GarrysMod\\garrysmod\\gamemodes\\jackass\\gamemode",
+			"C:\\Program Files (x86)\\Steam\\SteamApps\\common\\GarrysMod\\garrysmod\\gamemodes\\jackass\\gamemode"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";",
+			"IN_ATTACK",
+			"screenspace",
+			"case",
+			"//",
+			"PlayerNeckBroken",
+			"Kill",
+			"cache",
+			"\\t",
+			"10",
+			"\\t",
+			" ([\\.\\?\\!,]) ",
+			" ([\\.\\!\\?]) ",
+			"\\[quote.+?\\].+?\\[\\/quote\\]",
+			"\\n+",
+			"\\[QUOTE=.+\\[",
+			"\\n+",
+			" . ",
+			"Msg",
+			"RXNs",
+			"NWFloat",
+			"_phy\\w*.mdl",
+			"car",
+			"= body:GetPhysicsObjectNum\\((\\d+)\\)",
+			"Num\\((\\d)",
+			"Num\\((",
+			"(\\d),(\\d)",
+			"(\\d),(",
+			"([\\w\\/]+.mdl)\\t+([\\d,]+)",
+			"models/props_borealis/bluebarrel001.mdl				400",
+			"([\\w\\/]+.mdl)\\t+([\\d,]+)",
+			"t ",
+			"skybox",
+			"osc1",
+			"osc2",
+			"\\t",
+			"",
+			"0",
+			"weld(\\w)",
+			"Print",
+			"_physics.mdl",
+			"SetCols(10)",
+			"grid",
+			"scroller",
+			"([\\w\\/\\.]+)\\s+(\\d+)",
+			"))\n",
+			"material = \"ice\"",
+			",\\n\\t\\toffset = Angle\\(0, 180, 0\\)",
+			"([ (])k",
+			"\\},[\\s\\n]+\\{",
+			"([\\w\\/\\.]+)\\s+([]\\d,]+)",
+			",",
+			"([\\w\\/\\.]+)\\s+(\\d+)",
+			"300",
+			"entity",
+			"profit",
+			"200",
+			"player_info",
+			"script",
+			"((fov - 90) * 2.33 + 100)",
+			"\\W",
+			"left",
+			"--\\[\\[(?:.*\\s*)*?local(?:.*\\s*)*?--\\]\\]",
+			"--\\[\\[(?:.*\\s*)*?--\\]\\]",
+			"(\\d+)=(\\w+ *\\w* *\\w*)",
+			"(\\d+)=(\\w+)",
+			"#",
+			"\n#",
+			"isrenderingbones",
+			"ent",
+			"draw",
+			"ent",
+			"\\( (.*) \\)",
+			"skin",
+			"10",
+			"IsOnGround",
+			"\\n\\n\\n",
+			" .",
+			" ",
+			"lenny_",
+			"print",
+			"scoreboard",
+			"wrong",
+			"(function meta(?:.*\\n*)+?end)",
+			"_R",
+			"_R.Player",
+			"_R.Entity",
+			"_R.",
+			"!=",
+			"count",
+			"128",
+			"GetTeam",
+			"\\n{2,}",
+			"\\[.+arcbank.*?\\.(.?\\s?)+?arcbank.*?\\.",
+			"\\[.+SetLightData.*?\\.(.?\\s?)+?SetLightData.*?\\.",
+			"\\[.+DarkRP_.*?\\.(.?\\s?)+?DarkRP_.*?\\.",
+			"\\n{2,}",
+			"\\[.+ARCATM_COMM_BEEP.*?\\.(.?\\s?)+?ARCATM_COMM_BEEP.*?\\.",
+			"\\[.+URPC.*?\\.(.?\\s?)+?URPC.*?\\.",
+			"\\n{2,}",
+			"\\[.+ARCLib_Sound.*?\\.(.?\\s?)+?ARCLib_Sound.*?\\.",
+			"\\n{2,}",
+			"\\n+",
+			"\\[.+arcbank_comm_check.*?\\.(.?\\s?)+?arcbank_comm_check.*?\\.",
+			"\\[.+DarkRP_.*?\\.(.?\\s?)+?DarkRP_.*?\\.",
+			"received net message DarkRP.+Finished",
+			"IIIlI",
+			"IIIIl",
+			"lllIl",
+			"lIllI",
+			"lIlIl",
+			"llIIl",
+			"lllII",
+			"lIlll",
+			"llIII",
+			"llIlI",
+			"llIll",
+			"llllI",
+			"x1",
+			"lIllI",
+			"lllIl",
+			"lllII",
+			"IIIlI",
+			"IIIIl",
+			"lIlIl",
+			"llIIl",
+			"lIlll",
+			"llIII"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\n",
+			"--",
+			"JackassPlayerNeckBroken",
+			"m_cache",
+			"   ",
+			"\\1 ",
+			"",
+			". ",
+			"io.write",
+			"Reactions",
+			"NWInt",
+			"= \\1",
+			"\\1\\2",
+			" 		type = \"prop_physics\",\\n 		model = \"\\1\",\\n 		price = \\2\\n 	}, {",
+			" 		type = \"prop_physics\",\\n 		model = \"models/props_c17/oildrum001.mdl\",\\n 		price = 200\\n 	}, {",
+			"x ",
+			"bend",
+			"res",
+			"   ",
+			"",
+			"weld\\1\\[ply:EntIndex()\\]",
+			".mdl",
+			"SetCols(math.floor(ScrW() / 3 / 64))",
+			"grid2",
+			"scroller2",
+			"\\t}, {\\n\\t\\tmodel = \"\\1\",\\n\\t\\tprice = \\2\\n",
+			"material = \"ice\",\\n\\t\\toffset = Angle\\(0, 180, 0\\)",
+			"",
+			"\\1bone",
+			"}, {",
+			"\\t\\t{\\n\\t\\t\\ttype = \"prop_physics\",\\n\\t\\t\\tmodel = \"\\1\",\\n\\t\\t\\tprice = \\2\\n\\t\\t},",
+			"",
+			"\\t\\t{\\n\\t\\t\\ttype = \"prop_physics\",\\n\\t\\t\\tmodel = \"\\1\",\\n\\t\\t\\tprice = \\2\\n\\t\\t},",
+			"profit2",
+			"ja_player_info",
+			"((90 - fov) * 2.33 + 100)",
+			"",
+			"right",
+			"local \\2 = body:GetPhysicsObjectNum(\\1)",
+			"(\\1)",
+			"\\n",
+			".",
+			"",
+			"sb",
+			"\\1\\n\\n\\1",
+			"\\0\\n\\n\\0",
+			"meta",
+			"metaPly",
+			"metaEnt",
+			"meta",
+			"meta.",
+			"~=",
+			"Team",
+			"\\n\\n",
+			"",
+			"\\n\\n",
+			"",
+			"\\n\\n",
+			"",
+			"\\n\\n",
+			"\\n",
+			"",
+			"0",
+			"1",
+			":",
+			"sizeof",
+			"}",
+			"{",
+			"?",
+			"return",
+			";",
+			",",
+			")",
+			"(",
+			"long int*",
+			"long int",
+			"format",
+			"[#args]",
+			"",
+			"scenery",
+			"scenery$",
+			"scenery`1",
+			"",
+			" ",
+			", ",
+			"",
+			"\\\"$1\\\",",
+			"\\\"$1\\\"",
+			"$",
+			"$`",
+			"$1",
+			"\\\\1",
+			"\\1",
+			"TEST/$1/TEST",
+			"TEST$1TEST",
+			"\\\"\\1\\\"",
+			"/\"\\1/\"",
+			"\"\\$\"",
+			"\"\\1\"",
+			"\"[a-z]+\"",
+			"doubleaction",
+			"\\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "construct.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 178.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
