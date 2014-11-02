@@ -18,6 +18,9 @@ for k, v in pairs(files) do
 		if string.sub(v, 1, 3) == "cl_" and CLIENT then
 			load("construct/" .. v)
 		end
+		if string.sub(v, 1, 3) == "cl_" and SERVER then
+			AddCSLuaFile("construct/" .. v)
+		end
 		if string.sub(v, 1, 3) == "sh_" then
 			load("construct/" .. v)
 		end
