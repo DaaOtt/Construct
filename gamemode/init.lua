@@ -9,6 +9,15 @@ function GM:PlayerSpawnObject(ply, model, skin)
 	return true
 end
 
+function GM:PlayerLoadout(ply)
+	ply:Give("weapon_physgun")
+	ply:Give("gmod_tool")
+	ply:Give("weapon_crowbar")
+
+	ply:SetRunSpeed(200)
+	ply:SetWalkSpeed(150)	
+end
+
 --[[---------------------------------------------------------
    Name: DoPlayerEntitySpawn
    Desc: Utility function for player entity spawning functions

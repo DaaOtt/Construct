@@ -23,6 +23,15 @@ for k, v in pairs(files) do
 		end
 		if string.sub(v, 1, 3) == "sh_" then
 			load("construct/" .. v)
+			if SERVER then
+				AddCSLuaFile("construct/" .. v)
+			end
+		end
+		if string.sub(v, 1, 3) == "cs_" then
+			if SERVER then
+				print("Sent construct/" .. v .. " to clients")
+				AddCSLuaFile("construct/" .. v)
+			end
 		end
 	end
 end
@@ -33,4 +42,7 @@ function GM:PlayerNoClip(ply, s)
 	else 
 		return true
 	end
+end
+
+function GM:FinishMove()
 end
