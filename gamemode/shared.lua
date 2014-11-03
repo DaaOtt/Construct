@@ -46,3 +46,7 @@ end
 
 function GM:FinishMove()
 end
+
+function GM:PlayerShouldTakeDamage(ply, attacker)
+	return true
+end
