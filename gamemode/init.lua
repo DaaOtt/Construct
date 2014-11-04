@@ -18,6 +18,10 @@ function GM:PlayerLoadout(ply)
 	ply:SetWalkSpeed(150)	
 end
 
+function GM:GetFallDamage(ply, speed)
+	return (speed - 526.5) * (100 / 396) -- the Source SDK value
+end
+
 --[[---------------------------------------------------------
    Name: DoPlayerEntitySpawn
    Desc: Utility function for player entity spawning functions
