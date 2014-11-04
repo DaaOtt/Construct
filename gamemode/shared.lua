@@ -7,7 +7,7 @@ DeriveGamemode("sandbox")
 print("Loading files...")
 local files, folders = file.Find("construct/gamemode/construct/*", "LUA")
 local function load(s)
-	print("Loaded file " .. s)
+	print("\tLoaded file " .. s)
 	include(s)
 end
 for k, v in pairs(files) do
@@ -29,7 +29,7 @@ for k, v in pairs(files) do
 		end
 		if string.sub(v, 1, 3) == "cs_" then
 			if SERVER then
-				print("Sent construct/" .. v .. " to clients")
+				print("\tSent construct/" .. v .. " to clients")
 				AddCSLuaFile("construct/" .. v)
 			end
 		end
