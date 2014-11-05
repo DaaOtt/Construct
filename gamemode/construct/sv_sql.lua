@@ -54,19 +54,19 @@ end
 
 
 function sql_tables_exist()
-	if sql.TableExists("ja_player_info") then
+	if sql.TableExists("construct_player") then
 		print("The player table exists! Checking if stats are updated.")
 		for i = 1, #PSTATS do
-			local result = sql.Query("SELECT "..PSTATS[i].name.." FROM ja_player_info")
+			local result = sql.Query("SELECT "..PSTATS[i].name.." FROM construct_player")
 			if result == false then
 				print("Stat "..PSTATS[i].name.." doesn't exist, adding column.")
-				local result = sql.Query("ALTER TABLE ja_player_info ADD "..PSTATS[i].name.." "..PSTATS[i].type)
+				local result = sql.Query("ALTER TABLE construct_player ADD "..PSTATS[i].name.." "..PSTATS[i].type)
 			end
 		end
 	else
-		local query = "CREATE TABLE ja_player_info("..stats_nametype(PSTATS)..")"
+		local query = "CREATE TABLE construct_player("..stats_nametype(PSTATS)..")"
 		local result = sql.Query(query)
-		if sql.TableExists("ja_player_info") then
+		if sql.TableExists("construct_player") then
 			print("Success! Created the table\n")
 		else
 			print("Something went wrong creating the table!\n")
@@ -77,7 +77,7 @@ end
 
 function sql_player_exists(ply)
 	local steamID = ply:GetNWString("SteamID")
-	local result = sql.Query("SELECT "..stats_name(PSTATS).." FROM ja_player_info WHERE unique_id = '"..steamID.."'")
+	local result = sql.Query("SELECT "..stats_name(PSTATS).." FROM construct_player WHERE unique_id = '"..steamID.."'")
 	if result then
 		local tab = result[1]
 		if count(tab) == #PSTATS then
@@ -93,8 +93,8 @@ function sql_player_exists(ply)
 end
 
 function sql_new_player(steamID, ply)
-	sql.Query("INSERT INTO ja_player_info ("..stats_quotename(PSTATS)..") VALUES ('"..steamID.."', " .. stats_defaults(PSTATS, 1) .. ")")
-	local result = sql.Query("SELECT "..stats_name(PSTATS).." FROM ja_player_info WHERE unique_id = '"..steamID.."'")
+	sql.Query("INSERT INTO construct_player ("..stats_quotename(PSTATS)..") VALUES ('"..steamID.."', " .. stats_defaults(PSTATS, 1) .. ")")
+	local result = sql.Query("SELECT "..stats_name(PSTATS).." FROM construct_player WHERE unique_id = '"..steamID.."'")
 	if result then
 		print("Player account created!\n")
 	else
@@ -104,7 +104,7 @@ function sql_new_player(steamID, ply)
 end
 
 function sql_del_player(steamID)
-	sql.Query("DELETE FROM ja_player_info WHERE unique_id='"..steamID.."'")
+	sql.Query("DELETE FROM construct_player WHERE unique_id='"..steamID.."'")
 	print("Deleted player "..steamID)
 end
 
@@ -129,11 +129,11 @@ function sql_value_stats(ply)
 	local steamID = ply:SteamID()
 	for i = 1, #PSTATS do
 		if PSTATS[i].type == "int" then
-			ply:SetNWInt(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM ja_player_info WHERE unique_id = '"..steamID.."'"))
+			ply:SetNWInt(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM construct_player WHERE unique_id = '"..steamID.."'"))
 		elseif PSTATS[i].type == "varchar(255)" then
-			ply:SetNWString(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM ja_player_info WHERE unique_id = '"..steamID.."'"))
+			ply:SetNWString(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM construct_player WHERE unique_id = '"..steamID.."'"))
 		elseif PSTATS[i].type == "double" then
-			ply:SetNWFloat(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM ja_player_info WHERE unique_id = '"..steamID.."'"))
+			ply:SetNWFloat(PSTATS[i].name, sql.QueryValue("SELECT "..PSTATS[i].name.." FROM construct_player WHERE unique_id = '"..steamID.."'"))
 		end
 	end
 end
@@ -143,9 +143,9 @@ function sql_save_stats(ply)
 	local unique_id = ply:GetNWString("unique_id")
 	for i = 1, #PSTATS do
 		if PSTATS[i].type == "int" then
-			sql.Query("UPDATE ja_player_info SET "..PSTATS[i].name.." = '"..ply:GetNWInt(PSTATS[i].name).."' WHERE unique_id = '"..unique_id.."'")
+			sql.Query("UPDATE construct_player SET "..PSTATS[i].name.." = '"..ply:GetNWInt(PSTATS[i].name).."' WHERE unique_id = '"..unique_id.."'")
 		elseif PSTATS[i].type == "double" then
-			sql.Query("UPDATE ja_player_info SET "..PSTATS[i].name.." = '"..ply:GetNWFloat(PSTATS[i].name).."' WHERE unique_id = '"..unique_id.."'")
+			sql.Query("UPDATE construct_player SET "..PSTATS[i].name.." = '"..ply:GetNWFloat(PSTATS[i].name).."' WHERE unique_id = '"..unique_id.."'")
 		end
 	end
 end
