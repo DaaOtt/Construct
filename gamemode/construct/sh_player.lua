@@ -1,5 +1,8 @@
 local meta = FindMetaTable("Player")
-if not IsValid(meta) then return end
+if not meta then
+	print("player not valid or something")
+	return
+end
 
 function meta:GetWallet()
 	return self:GetNWInt("money")
@@ -12,9 +15,11 @@ function meta:SetWallet(a)
 end
 function meta:ChargeWallet(a)
 	if SERVER then
-		local m = self:GetNWInt("money")
+		a = tonumber(a)
+		local m = tonumber(self:GetNWInt("money"))
 		if a > m then return false end
-		m = m - a
+		m = math.floor(m - a)
 		self:SetNWInt("money", m)
+		return true
 	end
 end

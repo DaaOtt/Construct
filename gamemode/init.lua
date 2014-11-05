@@ -28,9 +28,10 @@ function GM:PlayerSpawnProp(ply, mdl)
 	prop:Spawn()
 	local obj = prop:GetPhysicsObject()
 	if IsValid(prop) and IsValid(obj) then
-		print(obj:GetMass())
+		local mass = obj:GetMass()
+		print(mass)
 		prop:Remove()
-		return true
+		return ply:ChargeWallet(mass)
 	else
 		prop:Remove()
 		return false
