@@ -19,13 +19,15 @@ for k, v in pairs(files) do
 			load("construct/" .. v)
 		end
 		if string.sub(v, 1, 3) == "cl_" and SERVER then
+			print("\tSent construct/" .. v .. " to clients")
 			AddCSLuaFile("construct/" .. v)
 		end
 		if string.sub(v, 1, 3) == "sh_" then
-			load("construct/" .. v)
 			if SERVER then
+				print("\tSent construct/" .. v .. " to clients")
 				AddCSLuaFile("construct/" .. v)
 			end
+			load("construct/" .. v)
 		end
 		if string.sub(v, 1, 3) == "cs_" then
 			if SERVER then
