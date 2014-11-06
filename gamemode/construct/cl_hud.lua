@@ -21,8 +21,12 @@ health.tx = 0
 health.px = 0
 health.ratio = 0
 
+local money = 0
+
 local function updatehealth()
 	if not IsValid(LocalPlayer()) then return end
+	money = LocalPlayer():GetWallet()
+
 	local ph = healthbar.th
 	healthbar.th = LocalPlayer():Health() / 100 * 180
 	healthbar.y = ScrH() - 64 - 24 - healthbar.h
@@ -49,7 +53,7 @@ local function updatehealth()
 end
 hook.Add("Tick", "UpdateHealth", updatehealth)
 
-local function drawhud()
+local function drawhealth()
 	healthbar.ratio = math.min(1, healthbar.ratio + FrameTime() * 2)
 	healthbar.h = healthbar.ph + easing.easeOutBounce(healthbar.ratio, 1, 0, 1) * healthbar.delta
 
@@ -67,4 +71,25 @@ local function drawhud()
 	surface.SetMaterial(heart)
 	surface.DrawTexturedRect(24 + health.x, ScrH() - 64 - 256 + 24, 16, 16)
 end
-hook.Add("HUDPaint", "DrawHud", drawhud)
+hook.Add("HUDPaint", "DrawHealth", drawhealth)
+
+
+surface.CreateFont("Wallet", {
+	font = "Courier",
+	size = 24,
+
+})
+local function drawwallet()
+	surface.SetFont("Wallet")
+	local text = "$" .. money
+	local w, h = surface.GetTextSize(text)
+	local width = math.ceil((w + 32) / 64) * 64
+
+	surface.SetDrawColor(Color(0, 0, 0, 128))
+	surface.DrawRect(ScrW() - 64 - width, 0, width, 64)
+
+	surface.SetTextColor(255, 255, 255, 255)
+	surface.SetTextPos(ScrW() - 64 - width / 2 - w / 2, 32 - h / 2)
+	surface.DrawText(text)
+end
+hook.Add("HUDPaint", "DrawWallet", drawwallet)
