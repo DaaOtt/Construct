@@ -58,7 +58,7 @@ function sql_tables_exist()
 		print("The player table exists! Checking if stats are updated.")
 		for i = 1, #PSTATS do
 			local result = sql.Query("SELECT "..PSTATS[i].name.." FROM construct_player")
-			if result == false then
+			if not result then
 				print("Stat "..PSTATS[i].name.." doesn't exist, adding column.")
 				local result = sql.Query("ALTER TABLE construct_player ADD "..PSTATS[i].name.." "..PSTATS[i].type)
 			end
