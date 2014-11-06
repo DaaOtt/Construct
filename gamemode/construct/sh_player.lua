@@ -17,7 +17,7 @@ function meta:ChargeWallet(a)
 	if SERVER then
 		a = tonumber(a)
 		local m = tonumber(self:GetNWInt("wallet"))
-		if a > m then return false end
+		if m - a < 0 then return false end
 		m = math.floor(m - a)
 		self:SetNWInt("wallet", m)
 		return true
