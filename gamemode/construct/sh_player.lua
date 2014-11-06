@@ -5,21 +5,21 @@ if not meta then
 end
 
 function meta:GetWallet()
-	return self:GetNWInt("money")
+	return self:GetNWInt("wallet")
 end
 function meta:SetWallet(a)
 	if SERVER then
-		self:SetNWInt("money", a)
+		self:SetNWInt("wallet", a)
 		return true
 	end
 end
 function meta:ChargeWallet(a)
 	if SERVER then
 		a = tonumber(a)
-		local m = tonumber(self:GetNWInt("money"))
+		local m = tonumber(self:GetNWInt("wallet"))
 		if a > m then return false end
 		m = math.floor(m - a)
-		self:SetNWInt("money", m)
+		self:SetNWInt("wallet", m)
 		return true
 	end
 end

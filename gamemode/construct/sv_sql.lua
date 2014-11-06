@@ -1,6 +1,6 @@
 local PSTATS = {
 	{name = "unique_id", type = "varchar(255)"},
-	{name = "money", type = "int"},
+	{name = "wallet", type = "int"},
 	{name = "playtime", type = "int"}
 }
 
