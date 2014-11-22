@@ -52,3 +52,8 @@ end
 function GM:PlayerShouldTakeDamage(ply, attacker)
 	return true
 end
+
+local function pushaway(ply, mv, cmd)
+	
+end
+hook.Add("SetupMove", "PushAway", pushaway)
