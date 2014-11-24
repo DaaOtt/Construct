@@ -52,5 +52,6 @@ hook.Add("PlayerInitialSpawn", "salary", function(ply)
 	timer.Create("salary" .. ply:EntIndex(), 300, 0, function()
 		local amnt = 1000
 		ply:Notify("You received a $" .. amnt .. " salary!", "NOTIFY_GENERIC", 5, "garrysmod/save_load1.wav")
+		ply:ChargeWallet(-1000)
 	end)
 end)
