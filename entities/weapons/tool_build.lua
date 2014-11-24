@@ -89,22 +89,22 @@ function SWEP:PrimaryAttack()
 					table.insert(filter, ent)
 					
 					local tr1 = util.TraceEntity({
-						start = ent:GetPos() + Vector(0, 0, 2), --Up/down
-						endpos = ent:GetPos() - Vector(0, 0, 2), 
+						start = ent:GetPos() + Vector(0, 0, 5), --Up/down
+						endpos = ent:GetPos() - Vector(0, 0, 5), 
 						filter = filter,
 						mask = MASK_SHOT,
 						}, 
 					ent)
 					local tr2 = util.TraceEntity({
-						start = ent:GetPos() + Vector(2, 0, 0), --Front/back
-						endpos = ent:GetPos() - Vector(2, 0, 0), 
+						start = ent:GetPos() + Vector(5, 0, 0), --Front/back
+						endpos = ent:GetPos() - Vector(5, 0, 0), 
 						filter = filter,
 						mask = MASK_SHOT,
 						}, 
 					ent)
 					local tr3 = util.TraceEntity({
-						start = ent:GetPos() + Vector(0, 2, 0), --Right/left
-						endpos = ent:GetPos() - Vector(0, 2, 0), 
+						start = ent:GetPos() + Vector(0, 5, 0), --Right/left
+						endpos = ent:GetPos() - Vector(0, 5, 0), 
 						filter = filter,
 						mask = MASK_SHOT,
 						}, 
