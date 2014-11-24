@@ -43,7 +43,8 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 	if IsValid(obj) then
 		print(obj:GetVolume()/500)
 		prop:SetMaxHealth(obj:GetVolume()/500)
+		obj:EnableMotion(false)
 	end
-	prop:SetCollisionGroup(COLLISION_GROUP_PASSABLE_DOOR)
+	prop:SetCollisionGroup(COLLISION_GROUP_WORLD)
 	prop:SetMaterial("models/wireframe")
 end

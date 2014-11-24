@@ -53,7 +53,17 @@ function GM:PlayerShouldTakeDamage(ply, attacker)
 	return true
 end
 
-local function pushaway(ply, mv, cmd)
-	
+local function drop(ply, ent)
+	local obj = ent:GetPhysicsObject()
+	if IsValid(obj) then
+		obj:EnableMotion(false)
+	end
 end
-hook.Add("SetupMove", "PushAway", pushaway)
+hook.Add("PhysgunDrop", "DropFreeze", drop)
+
+local function grab(ply, ent)
+	if ent:GetNWBool("built") then
+		return false
+	end
+end
+hook.Add("PhysgunPickup", "PickupDisable", grab)
