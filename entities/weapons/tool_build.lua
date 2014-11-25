@@ -109,7 +109,28 @@ function SWEP:PrimaryAttack()
 						mask = MASK_SHOT,
 						}, 
 					ent)
-					if not (entvalid(tr1) or entvalid(tr2) or entvalid(tr3)) then
+					local tr4 = util.TraceEntity({
+						start = ent:GetPos() - Vector(0, 0, 5), --Down/up
+						endpos = ent:GetPos() + Vector(0, 0, 5), 
+						filter = filter,
+						mask = MASK_SHOT,
+						}, 
+					ent)
+					local tr5 = util.TraceEntity({
+						start = ent:GetPos() - Vector(5, 0, 0), --Back/front
+						endpos = ent:GetPos() + Vector(5, 0, 0), 
+						filter = filter,
+						mask = MASK_SHOT,
+						}, 
+					ent)
+					local tr6 = util.TraceEntity({
+						start = ent:GetPos() - Vector(0, 5, 0), --Left/right
+						endpos = ent:GetPos() + Vector(0, 5, 0), 
+						filter = filter,
+						mask = MASK_SHOT,
+						}, 
+					ent)
+					if not (entvalid(tr1) or entvalid(tr2) or entvalid(tr3) or entvalid(tr4) or entvalid(tr5) or entvalid(tr6)) then
 						obj:EnableMotion(true)
 						obj:Wake()
 					end
