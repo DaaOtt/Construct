@@ -13,7 +13,7 @@ function GM:PlayerLoadout(ply)
 	ply:Give("gmod_tool")
 	ply:Give("tool_build")
 
-	ply:SetRunSpeed(200)
+	ply:SetRunSpeed(225)
 	ply:SetWalkSpeed(150)	
 end
 
@@ -49,9 +49,9 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 	prop:SetMaterial("models/wireframe")
 end
 hook.Add("PlayerInitialSpawn", "salary", function(ply)
-	timer.Create("salary" .. ply:EntIndex(), 300, 0, function()
-		local amnt = 1000
+	timer.Create("salary" .. ply:EntIndex(), 300 / 2, 0, function()
+		local amnt = 500
 		ply:Notify("You received a $" .. amnt .. " salary!", "NOTIFY_GENERIC", 5, "garrysmod/save_load1.wav")
-		ply:ChargeWallet(-1000)
+		ply:ChargeWallet(-amnt)
 	end)
 end)
