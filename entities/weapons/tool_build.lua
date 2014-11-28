@@ -49,9 +49,23 @@ local function entvalid(trace)
 		end
 	end
 end
-
+local function getcorners(ent)
+	local mins, maxs = ent:GetModelBounds()
+	return {
+		mins, --back_left_bottom
+		Vector(mins[1], maxs[2], mins[3]), --back_right_bottom
+		Vector(maxs[1], maxs[2], mins[3]), --front_right_bottom
+		Vector(maxs[1], mins[2], mins[3]), --front_left_bottom
+		Vector(mins[1], mins[2], maxs[3]), --back_left_top
+		Vector(mins[1], maxs[2], maxs[3]), --back_right_top
+		maxs, --front_right_top
+		Vector(maxs[1], mins[2], maxs[3]), --front_left_top
+	}
+end
+local wep
 function SWEP:Initialize()
-    self:SetWeaponHoldType( self.HoldType )
+	self:SetWeaponHoldType( self.HoldType )
+	wep = self
 end
 
 
@@ -65,7 +79,7 @@ function SWEP:PrimaryAttack()
 		start = self.Owner:GetShootPos(),
 		endpos = self.Owner:GetShootPos() + self.Owner:GetAimVector() * 75,
 		filter = self.Owner,
-		mask = MASK_SHOT,
+		mask = MASK_SHOT + CONTENTS_GRATE,
 	}
 	
 	--local trace = self.Owner:GetEyeTrace()
@@ -85,17 +99,33 @@ function SWEP:PrimaryAttack()
 				ent:SetCollisionGroup(COLLISION_GROUP_NONE)
 				local obj = ent:GetPhysicsObject()
 				if IsValid(obj) then
+					
 					local filter = player.GetAll()
 					table.insert(filter, ent)
-					local tr = util.TraceEntity({
-						start = ent:GetPos(),
-						endpos = ent:GetPos(), 
-						filter = filter,
-						mask = MASK_SHOT,
-						}, 
-					ent)
-					if not entvalid(tr) then
-						PrintTable(tr)
+					local traces = {}
+					local corners = getcorners(ent)
+					local pass = false
+					for i = 1, #corners do
+						for j = 1, #corners do
+							local normi = Vector()
+							local normj = Vector()
+							normi:Set(corners[i])
+							normj:Set(corners[j])
+							normi:Normalize()
+							normj:Normalize()
+							local tr = util.TraceLine{
+								start = ent:LocalToWorld(corners[i] + normi),
+								endpos = ent:LocalToWorld(corners[j] + normj),
+								mask = MASK_SHOT + CONTENTS_GRATE,
+								filter = filter,
+							}
+							if entvalid(tr) then
+								pass = true
+								break
+							end
+						end
+					end
+					if not pass then
 						obj:EnableMotion(true)
 						obj:Wake()
 					end
