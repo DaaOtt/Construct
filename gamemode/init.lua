@@ -55,3 +55,6 @@ hook.Add("PlayerInitialSpawn", "salary", function(ply)
 		ply:ChargeWallet(-amnt)
 	end)
 end)
+function GM:CanPlayerUnfreeze()
+	return false
+end

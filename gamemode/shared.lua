@@ -49,10 +49,6 @@ end
 function GM:FinishMove()
 end
 
-function GM:PlayerShouldTakeDamage(ply, attacker)
-	return true
-end
-
 local function drop(ply, ent)
 	local obj = ent:GetPhysicsObject()
 	if IsValid(obj) then
