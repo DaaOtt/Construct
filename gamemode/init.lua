@@ -36,18 +36,31 @@ function GM:PlayerSpawnProp(ply, mdl)
 		return false
 	end
 end
+
+local props = {}
+hook.Add("EntityRemoved", "proprefund", function(ent)
+	if props[ent] then
+		if IsValid(props[ent].ply) then
+			props[ent].ply:ChargeWallet(-props[ent].refund + 25)
+			props[ent] = nil
+		end
+	end
+end)
 function GM:PlayerSpawnedProp(ply, mdl, prop)
 	prop:SetHealth(0)
 	prop:SetMaxHealth(100)
 	local obj = prop:GetPhysicsObject()
 	if IsValid(obj) then
-		print(obj:GetVolume()/500)
-		prop:SetMaxHealth(obj:GetVolume()/500)
+		local mass = obj:GetMass()
+		local size = obj:GetVolume()
+		prop:SetMaxHealth(size/500)
 		obj:EnableMotion(false)
+		props[prop] = {refund = math.sqrt(mass + size), ply = ply}
 	end
 	prop:SetCollisionGroup(COLLISION_GROUP_WORLD)
 	prop:SetMaterial("models/wireframe")
 end
+
 hook.Add("PlayerInitialSpawn", "salary", function(ply)
 	timer.Create("salary" .. ply:EntIndex(), 300 / 2, 0, function()
 		local amnt = 500
