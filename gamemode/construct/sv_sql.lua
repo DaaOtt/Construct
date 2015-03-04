@@ -1,6 +1,6 @@
 local PSTATS = {
 	{name = "unique_id", type = "varchar(255)"},
-	{name = "wallet", type = "int"},
+	{name = "wallet", type = "int", default = 2000},
 	{name = "playtime", type = "int"}
 }
 
@@ -42,7 +42,9 @@ local function stats_defaults(o, omit)
 	for i = 1, #o do
 		if i > omit then
 			if o[i].type == "int" or o[i].type == "double" then
-				result = result .. 0 .. ", "
+				local val = 0
+				if o[i].default then val = o[i].default end
+				result = result .. val .. ", "
 			elseif o[i].type == "varchar(255)" then
 				result = result .. "''" .. ", "
 			end
