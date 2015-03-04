@@ -57,8 +57,9 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 		obj:EnableMotion(false)
 		props[prop] = {refund = (size / 500) - (size / 500) % 25, ply = ply}
 	end
-	prop:SetCollisionGroup(COLLISION_GROUP_WORLD)
+	prop:SetCollisionGroup(COLLISION_GROUP_PUSHAWAY)
 	prop:SetMaterial("models/wireframe")
+	prop:SetCustomCollisionCheck(true)
 end
 
 hook.Add("PlayerInitialSpawn", "salary", function(ply)

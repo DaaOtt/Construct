@@ -97,6 +97,7 @@ function SWEP:PrimaryAttack()
 				ent:SetNWBool("built", true)
 				ent:SetMaterial("")
 				ent:SetCollisionGroup(COLLISION_GROUP_NONE)
+				ent:SetCustomCollisionCheck(false)
 				local obj = ent:GetPhysicsObject()
 				if IsValid(obj) then
 					

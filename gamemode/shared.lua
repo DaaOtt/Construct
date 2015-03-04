@@ -63,3 +63,52 @@ local function grab(ply, ent)
 	end
 end
 hook.Add("PhysgunPickup", "PickupDisable", grab)
+
+
+hook.Add("ShouldCollide", "push", function(ent1, ent2)
+	local c1, c2 = ent1:GetCollisionGroup(), ent2:GetCollisionGroup()
+	local prop, ply
+	if c1 == COLLISION_GROUP_PUSHAWAY and c2 == COLLISION_GROUP_PUSHAWAY then
+		return false
+	end
+	if c1 ~= COLLISION_GROUP_PUSHAWAY and c2 ~= COLLISION_GROUP_PUSHAWAY then
+		return true
+	end
+	if c1 then
+		prop = ent1
+		ply = ent2
+	elseif c2 then
+		prop = ent2
+		ply = ent1
+	end
+	if not ply:IsPlayer() then return false end
+	if not ply:Alive() then return false end
+	local tr = util.TraceHull{
+		start = ply:GetPos(),
+		endpos = ply:GetPos(),
+		mins = Vector(-24, -24, -8),
+		maxs = Vector(24, 24, 80),
+		filter = {ply},
+		ignoreworld = true,
+	}
+	if tr.Hit and tr.Entity == prop then
+		return false
+	end
+end)
+hook.Add("SetupMove", "push", function(ply, mv, cmd)
+	local tr = util.TraceHull{
+		start = ply:GetPos(),
+		endpos = ply:GetPos(),
+		mins = Vector(-16, -16, 0),
+		maxs = Vector(16, 16, 72),
+		filter = ply,
+		ignoreworld = true,
+	}
+	if tr.Hit and tr.Entity and tr.Entity:GetCollisionGroup() == COLLISION_GROUP_PUSHAWAY then
+		local prop = tr.Entity
+		local velvec = ply:GetPos() - prop:WorldSpaceCenter()
+		velvec.z = 0
+		velvec:Normalize()
+		mv:SetVelocity(mv:GetVelocity() + velvec * 10)
+	end
+end)
