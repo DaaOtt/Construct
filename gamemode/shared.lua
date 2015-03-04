@@ -109,6 +109,6 @@ hook.Add("SetupMove", "push", function(ply, mv, cmd)
 		local velvec = ply:GetPos() - prop:WorldSpaceCenter()
 		velvec.z = 0
 		velvec:Normalize()
-		mv:SetVelocity(mv:GetVelocity() + velvec * 10)
+		mv:SetVelocity(mv:GetVelocity() + velvec * 5)
 	end
 end)
