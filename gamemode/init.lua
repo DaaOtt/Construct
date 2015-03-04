@@ -74,7 +74,7 @@ function GM:CanPlayerUnfreeze()
 end
 
 hook.Add("PlayerBuild", "walletcheck", function(ply, ent)
-	if ent:Health() < ent:GetMaxHealth() then
+	if not ent:GetNWBool("built") then
 		return ply:ChargeWallet(25)
 	end
 end)
