@@ -90,7 +90,7 @@ function SWEP:PrimaryAttack()
 		self.Weapon:SendWeaponAnim(ACT_VM_HITCENTER)
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		local ent = trace.Entity
-		if SERVER and ent:GetClass() == "prop_physics" then
+		if SERVER and ent:GetClass() == "prop_physics" and hook.Call("PlayerBuild", nil, self.Owner, ent) then
 			ent:SetHealth(math.min(ent:GetMaxHealth(), ent:Health() + 25))
 
 			if ent:Health() == ent:GetMaxHealth() and not ent:GetNWBool("built") then

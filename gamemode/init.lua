@@ -30,7 +30,7 @@ function GM:PlayerSpawnProp(ply, mdl)
 		local mass = obj:GetMass()
 		local size = obj:GetVolume()
 		prop:Remove()
-		return ply:ChargeWallet(math.sqrt(size + mass))
+		return ply:ChargeWallet(25)
 	else
 		prop:Remove()
 		return false
@@ -55,7 +55,7 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 		local size = obj:GetVolume()
 		prop:SetMaxHealth(size/500)
 		obj:EnableMotion(false)
-		props[prop] = {refund = math.sqrt(mass + size), ply = ply}
+		props[prop] = {refund = (size / 500) - (size / 500) % 25, ply = ply}
 	end
 	prop:SetCollisionGroup(COLLISION_GROUP_WORLD)
 	prop:SetMaterial("models/wireframe")
@@ -68,6 +68,13 @@ hook.Add("PlayerInitialSpawn", "salary", function(ply)
 		ply:ChargeWallet(-amnt)
 	end)
 end)
+
 function GM:CanPlayerUnfreeze()
 	return false
 end
+
+hook.Add("PlayerBuild", "walletcheck", function(ply, ent)
+	if ent:Health() < ent:GetMaxHealth() then
+		return ply:ChargeWallet(25)
+	end
+end)
