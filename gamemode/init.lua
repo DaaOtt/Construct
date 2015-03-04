@@ -73,8 +73,13 @@ function GM:CanPlayerUnfreeze()
 	return false
 end
 
+local sounds = {
+	"physics/metal/metal_box_strain4.wav",
+	"physics/metal/metal_solid_strain5.wav",
+}
 hook.Add("PlayerBuild", "walletcheck", function(ply, ent)
 	if not ent:GetNWBool("built") then
+		ent:EmitSound(table.Random(sounds), 165, math.random(90, 110))
 		return ply:ChargeWallet(25)
 	end
 end)
