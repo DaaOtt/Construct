@@ -68,12 +68,6 @@ hook.Add("PhysgunPickup", "PickupDisable", grab)
 hook.Add("ShouldCollide", "push", function(ent1, ent2)
 	local c1, c2 = ent1:GetCollisionGroup(), ent2:GetCollisionGroup()
 	local prop, ply
-	if c1 == COLLISION_GROUP_PUSHAWAY and c2 == COLLISION_GROUP_PUSHAWAY then
-		return false
-	end
-	if c1 ~= COLLISION_GROUP_PUSHAWAY and c2 ~= COLLISION_GROUP_PUSHAWAY then
-		return true
-	end
 	if c1 then
 		prop = ent1
 		ply = ent2
@@ -81,8 +75,6 @@ hook.Add("ShouldCollide", "push", function(ent1, ent2)
 		prop = ent2
 		ply = ent1
 	end
-	if not ply:IsPlayer() then return false end
-	if not ply:Alive() then return false end
 	local tr = util.TraceHull{
 		start = ply:GetPos(),
 		endpos = ply:GetPos(),
@@ -104,10 +96,12 @@ hook.Add("ShouldCollide", "push", function(ent1, ent2)
 			output = tr,
 		}
 	end
-	if tr.Hit and tr.Entity == prop then
-		return false
-	end
-	if CLIENT then return false end
+	if ent1 == Entity(0) or ent2 == Entity(0) then return end
+	if not ply:IsPlayer() then return false elseif not ply:Alive() then return false end
+	if c1 ~= COLLISION_GROUP_PUSHAWAY and c2 ~= COLLISION_GROUP_PUSHAWAY then return end
+	if c1 == COLLISION_GROUP_PUSHAWAY and c2 == COLLISION_GROUP_PUSHAWAY then return false end
+	if tr.Hit and tr.Entity == prop then return false end
+	if CLIENT then return prop:GetCollisionGroup() ~= COLLISION_GROUP_PUSHAWAY end
 end)
 hook.Add("SetupMove", "push", function(ply, mv, cmd)
 	local tr = util.TraceHull{

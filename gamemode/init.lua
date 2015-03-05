@@ -60,6 +60,7 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 	prop:SetCollisionGroup(COLLISION_GROUP_PUSHAWAY)
 	prop:SetMaterial("models/wireframe")
 	prop:SetCustomCollisionCheck(true)
+	prop:SetNWBool("built", false)
 end
 
 hook.Add("PlayerInitialSpawn", "salary", function(ply)
