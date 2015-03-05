@@ -107,6 +107,7 @@ hook.Add("ShouldCollide", "push", function(ent1, ent2)
 	if tr.Hit and tr.Entity == prop then
 		return false
 	end
+	if CLIENT then return false end
 end)
 hook.Add("SetupMove", "push", function(ply, mv, cmd)
 	local tr = util.TraceHull{
