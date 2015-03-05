@@ -91,6 +91,7 @@ hook.Add("AdvDupe_FinishPasting", "nocolllide", function(tab)
 	for _, ent in pairs(ents) do
 		if ent:GetClass() == "prop_physics" then
 			ent:SetCollisionGroup(COLLISION_GROUP_PUSHAWAY)
+			ent:SetMaterial("models/wireframe")
 		end
 	end
 end)
