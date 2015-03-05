@@ -91,6 +91,19 @@ hook.Add("ShouldCollide", "push", function(ent1, ent2)
 		filter = {ply},
 		ignoreworld = true,
 	}
+	local ents = {ply}
+	while tr.Hit and tr.Entity ~= prop do
+		ents[#ents + 1] = tr.Entity
+		util.TraceHull{
+			start = ply:GetPos(),
+			endpos = ply:GetPos(),
+			mins = Vector(-24, -24, -8),
+			maxs = Vector(24, 24, 80),
+			filter = ents,
+			ignoreworld = true,
+			output = tr,
+		}
+	end
 	if tr.Hit and tr.Entity == prop then
 		return false
 	end
