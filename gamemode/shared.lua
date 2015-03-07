@@ -64,45 +64,6 @@ local function grab(ply, ent)
 end
 hook.Add("PhysgunPickup", "PickupDisable", grab)
 
-
-hook.Add("ShouldCollide", "push", function(ent1, ent2)
-	local c1, c2 = ent1:GetCollisionGroup(), ent2:GetCollisionGroup()
-	local prop, ply
-	if c1 then
-		prop = ent1
-		ply = ent2
-	elseif c2 then
-		prop = ent2
-		ply = ent1
-	end
-	local tr = util.TraceHull{
-		start = ply:GetPos(),
-		endpos = ply:GetPos(),
-		mins = Vector(-24, -24, -8),
-		maxs = Vector(24, 24, 80),
-		filter = {ply},
-		ignoreworld = true,
-	}
-	local ents = {ply}
-	while tr.Hit and tr.Entity ~= prop do
-		ents[#ents + 1] = tr.Entity
-		util.TraceHull{
-			start = ply:GetPos(),
-			endpos = ply:GetPos(),
-			mins = Vector(-24, -24, -8),
-			maxs = Vector(24, 24, 80),
-			filter = ents,
-			ignoreworld = true,
-			output = tr,
-		}
-	end
-	if ent1 == Entity(0) or ent2 == Entity(0) then return end
-	if not ply:IsPlayer() then return false elseif not ply:Alive() then return false end
-	if c1 ~= COLLISION_GROUP_PUSHAWAY and c2 ~= COLLISION_GROUP_PUSHAWAY then return end
-	if c1 == COLLISION_GROUP_PUSHAWAY and c2 == COLLISION_GROUP_PUSHAWAY then return false end
-	if tr.Hit and tr.Entity == prop then return false end
-	if CLIENT then return prop:GetCollisionGroup() ~= COLLISION_GROUP_PUSHAWAY end
-end)
 hook.Add("SetupMove", "push", function(ply, mv, cmd)
 	local tr = util.TraceHull{
 		start = ply:GetPos(),
@@ -112,7 +73,7 @@ hook.Add("SetupMove", "push", function(ply, mv, cmd)
 		filter = ply,
 		ignoreworld = true,
 	}
-	if tr.Hit and tr.Entity and tr.Entity:GetCollisionGroup() == COLLISION_GROUP_PUSHAWAY then
+	if tr.Hit and tr.Entity and tr.Entity:GetCollisionGroup() == COLLISION_GROUP_WORLD then
 		local prop = tr.Entity
 		local velvec = ply:GetPos() - prop:WorldSpaceCenter()
 		velvec.z = 0
