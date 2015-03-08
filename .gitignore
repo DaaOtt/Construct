@@ -219,3 +219,7 @@ pip-log.txt
 #########
 *.sublime-project
 *.sublime-workspace
+content/mapsrc/*.bsp
+content/mapsrc/*.log
+content/mapsrc/*.vmx
+content/mapsrc/*.prt
