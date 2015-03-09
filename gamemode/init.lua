@@ -95,3 +95,6 @@ hook.Add("AdvDupe_FinishPasting", "nocolllide", function(tab)
 		end
 	end
 end)
+
+util.AddNetworkString("lot_open")
+util.AddNetworkString("lot_leave")

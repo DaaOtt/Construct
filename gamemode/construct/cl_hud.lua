@@ -93,3 +93,49 @@ local function drawwallet()
 	surface.DrawText(text)
 end
 hook.Add("HUDPaint", "DrawWallet", drawwallet)
+
+
+surface.CreateFont("LotOpen", {
+	font = "Roboto",
+	size = 18,
+	weight = 200,
+})
+local up = -32
+local goingup = false
+local goingdown = false
+local delta = 0
+hook.Add("HUDPaint", "LotOpen", function()
+	local w, h = ScrW(), ScrH()
+	surface.SetDrawColor(Color(0, 255, 0, 128))
+	surface.DrawRect(w - 300, h - 32 - up, 300, 32 + 16)
+	draw.DrawText("This lot is available! Press F2 for options.", "LotOpen", w - 150, h - 24 - up, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER)
+end)
+hook.Add("Think", "LotOpen", function()
+	if goingup then
+		if up >= 0 then
+			up = 0
+			delta = 0
+			goingup = false
+		else
+			delta = delta + FrameTime()
+			up = easing.easeOut(delta, 1, 0, 1) * 32 * 2 - 32
+		end
+	elseif goingdown then
+		if up <= -32 then
+			delta = 0
+			up = -32
+			goingdown = false
+		else
+			delta = delta + FrameTime()
+			up = -easing.easeIn(delta, 1, 0, 1) * 32 * 2
+		end
+	end
+end)
+net.Receive("lot_open", function()
+	goingup = true
+	goingdown = false
+end)
+net.Receive("lot_leave", function()
+	goingdown = true
+	goingup = false
+end)
