@@ -37,7 +37,7 @@ function ENT:IsOwner(a)
 end
 function ENT:GetOwners()
 	local tab = {}
-	for o in self.owners do
+	for o in pairs(self.owners) do
 		tab[#tab + 1] = o
 	end
 	return tab

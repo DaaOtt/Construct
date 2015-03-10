@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6412"
-	"mapversion" "52"
+	"mapversion" "53"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,7 +20,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "52"
+	"mapversion" "53"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -10661,7 +10661,6 @@ entity
 	"duskscale" "0.5"
 	"fadebias" "0.1"
 	"hdrscale" "0.56"
-	"origin" "-128 128 986"
 	"starfade" "0.5"
 	"starscale" "2"
 	"starspeed" "0.03"
@@ -10671,6 +10670,7 @@ entity
 	"sunposmethod" "1"
 	"sunsize" "0"
 	"topcolor" "0.22 0.51 1.00"
+	"origin" "-128 128 986"
 	editor
 	{
 		"color" "220 30 220"
@@ -10717,7 +10717,7 @@ entity
 entity
 {
 	"id" "1421"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1419"
@@ -10805,7 +10805,7 @@ entity
 entity
 {
 	"id" "1427"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1408"
@@ -10893,7 +10893,7 @@ entity
 entity
 {
 	"id" "1431"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1409"
@@ -10981,7 +10981,7 @@ entity
 entity
 {
 	"id" "1439"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1403"
@@ -11069,7 +11069,7 @@ entity
 entity
 {
 	"id" "1443"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1402"
@@ -11157,7 +11157,7 @@ entity
 entity
 {
 	"id" "1447"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1388"
@@ -11245,7 +11245,7 @@ entity
 entity
 {
 	"id" "1451"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1387"
@@ -11333,7 +11333,7 @@ entity
 entity
 {
 	"id" "1463"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1389"
@@ -11421,7 +11421,7 @@ entity
 entity
 {
 	"id" "1467"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1404"
@@ -11509,7 +11509,7 @@ entity
 entity
 {
 	"id" "1471"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1410"
@@ -11597,7 +11597,7 @@ entity
 entity
 {
 	"id" "1489"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "1418"
@@ -12035,7 +12035,7 @@ entity
 entity
 {
 	"id" "2373"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2374"
@@ -12123,7 +12123,7 @@ entity
 entity
 {
 	"id" "2375"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2376"
@@ -12211,7 +12211,7 @@ entity
 entity
 {
 	"id" "2377"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2378"
@@ -12299,7 +12299,7 @@ entity
 entity
 {
 	"id" "2379"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2380"
@@ -12387,7 +12387,7 @@ entity
 entity
 {
 	"id" "2381"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2382"
@@ -12475,7 +12475,7 @@ entity
 entity
 {
 	"id" "2383"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2384"
@@ -12563,7 +12563,7 @@ entity
 entity
 {
 	"id" "2385"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2386"
@@ -12651,7 +12651,7 @@ entity
 entity
 {
 	"id" "2387"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2388"
@@ -12739,7 +12739,7 @@ entity
 entity
 {
 	"id" "2389"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2390"
@@ -12827,7 +12827,7 @@ entity
 entity
 {
 	"id" "2391"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2392"
@@ -12915,7 +12915,7 @@ entity
 entity
 {
 	"id" "2393"
-	"classname" "func_plot"
+	"classname" "func_lot"
 	solid
 	{
 		"id" "2394"
