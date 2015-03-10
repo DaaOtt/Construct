@@ -104,11 +104,13 @@ local up = -32
 local goingup = false
 local goingdown = false
 local delta = 0
+local color = Color(0, 255, 0, 128)
+local text = "This lot is available! Press F2 for options."
 hook.Add("HUDPaint", "LotOpen", function()
 	local w, h = ScrW(), ScrH()
-	surface.SetDrawColor(Color(0, 255, 0, 128))
+	surface.SetDrawColor(color)
 	surface.DrawRect(w - 300, h - 32 - up, 300, 32 + 16)
-	draw.DrawText("This lot is available! Press F2 for options.", "LotOpen", w - 150, h - 24 - up, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER)
+	draw.DrawText(text, "LotOpen", w - 150, h - 24 - up, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER)
 end)
 hook.Add("Think", "LotOpen", function()
 	if goingup then
@@ -131,7 +133,19 @@ hook.Add("Think", "LotOpen", function()
 		end
 	end
 end)
-net.Receive("lot_open", function()
+net.Receive("lot_enter", function()
+	local ply = net.ReadEntity()
+	if ply:IsPlayer() then
+		color = Color(0, 0, 0, 128)
+		text = "Lot owner: " .. ply:Nick()
+		timer.Simple(3, function()
+			goingup = false
+			goingdown = true
+		end)
+	else
+		color = Color(0, 255, 0, 128)
+		text = "This lot is available! Press F2 for options."
+	end
 	goingup = true
 	goingdown = false
 end)

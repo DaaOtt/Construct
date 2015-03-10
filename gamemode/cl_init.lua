@@ -9,4 +9,19 @@ net.Receive("lot_menu", function()
 	frame:SetSize(800, 600)
 	frame:Center()
 	frame:MakePopup(true)
+	local cats = vgui.Create("DCollapsibleCategory", frame)
+	cats:Dock(FILL)
+	cats:SetLabel("Actions")
+	local buy = vgui.Create("DButton", cats)
+	if owner:IsPlayer() then
+		buy:SetText("Sell this lot")
+	else
+		buy:SetText("Buy this lot")
+	end
+	buy:Dock(TOP)
+	buy.DoClick = function()
+		net.Start("lot_buy")
+		net.SendToServer()
+		frame:Close()
+	end
 end)

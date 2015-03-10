@@ -9,7 +9,11 @@ function ENT:StartTouch(ent)
 	self.ents[ent] = true
 	if ent:IsPlayer() and ent:Alive() then
 		if not IsValid(self:GetOwner()) then
-			net.Start("lot_open")
+			net.Start("lot_enter")
+			net.Send(ent)
+		else
+			net.Start("lot_enter")
+				net.WriteEntity(self:GetOwner())
 			net.Send(ent)
 		end
 	end

@@ -114,7 +114,27 @@ function GM:ShowTeam(ply)
 	end
 end
 
-util.AddNetworkString("lot_open")
+net.Receive("lot_buy", function(len, ply)
+	local lot
+	for l in pairs(CONSTRUCT.lots) do
+		if l:Contains(ply) then
+			lot = l
+			break
+		end
+	end
+	if IsValid(lot) then
+		if IsValid(lot:GetOwner()) then
+			lot:SetOwner(nil)
+			net.Start("lot_open")
+			net.Send(ply)
+		else
+			lot:SetOwner(ply)
+			net.Start("lot_leave")
+			net.Send(ply)
+		end
+	end
+end)
+util.AddNetworkString("lot_enter")
 util.AddNetworkString("lot_leave")
 util.AddNetworkString("lot_menu")
 util.AddNetworkString("lot_buy")
