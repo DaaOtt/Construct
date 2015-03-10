@@ -2,6 +2,7 @@ ENT.Type = "brush"
 function ENT:Initialize()
 	self.ents = {}
 	self.owners = {}
+	CONSTRUCT.lots[self] = true
 end
 function ENT:StartTouch(ent)
 	print("in", ent, self)
@@ -33,4 +34,11 @@ function ENT:RemoveOwner(a)
 end
 function ENT:IsOwner(a)
 	return self.owners[a]
+end
+function ENT:GetOwners()
+	local tab = {}
+	for o in self.owners do
+		tab[#tab + 1] = o
+	end
+	return tab
 end

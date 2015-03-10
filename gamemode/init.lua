@@ -3,7 +3,8 @@ AddCSLuaFile("shared.lua")
 
 include("shared.lua")
 
-
+CONSTRUCT = {}
+CONSTRUCT.lots = {}
 function GM:PlayerSpawnObject(ply, model, skin)
 	return true
 end
@@ -96,5 +97,24 @@ hook.Add("AdvDupe_FinishPasting", "nocolllide", function(tab)
 	end
 end)
 
+function GM:ShowTeam(ply)
+	local lot
+	for l in pairs(CONSTRUCT.lots) do
+		if l:Contains(ply) then
+			lot = l
+			break
+		end
+	end
+	print(lot)
+	if IsValid(lot) then
+		net.Start("lot_menu")
+			net.WriteEntity(lot:GetOwner())
+			net.WriteTable(lot:GetOwners())
+		net.Send(ply)
+	end
+end
+
 util.AddNetworkString("lot_open")
 util.AddNetworkString("lot_leave")
+util.AddNetworkString("lot_menu")
+util.AddNetworkString("lot_buy")
