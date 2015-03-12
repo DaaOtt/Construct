@@ -62,6 +62,7 @@ function GM:PlayerSpawnedProp(ply, mdl, prop)
 	prop:SetMaterial("models/wireframe")
 	prop:SetCustomCollisionCheck(true)
 	prop:SetNWBool("built", false)
+	prop:SetNWEntity("owner", ply)
 end
 
 hook.Add("PlayerInitialSpawn", "salary", function(ply)
