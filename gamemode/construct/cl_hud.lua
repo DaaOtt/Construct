@@ -94,62 +94,15 @@ local function drawwallet()
 end
 hook.Add("HUDPaint", "DrawWallet", drawwallet)
 
-
-surface.CreateFont("LotOpen", {
-	font = "Roboto",
-	size = 18,
-	weight = 200,
-})
-local up = -32
-local goingup = false
-local goingdown = false
-local delta = 0
-local color = Color(0, 255, 0, 128)
-local text = "This lot is available! Press F2 for options."
-hook.Add("HUDPaint", "LotOpen", function()
-	local w, h = ScrW(), ScrH()
-	surface.SetDrawColor(color)
-	surface.DrawRect(w - 300, h - 32 - up, 300, 32 + 16)
-	draw.DrawText(text, "LotOpen", w - 150, h - 24 - up, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER)
-end)
-hook.Add("Think", "LotOpen", function()
-	if goingup then
-		if up >= 0 then
-			up = 0
-			delta = 0
-			goingup = false
-		else
-			delta = delta + FrameTime()
-			up = easing.easeOut(delta, 1, 0, 1) * 32 * 2 - 32
-		end
-	elseif goingdown then
-		if up <= -32 then
-			delta = 0
-			up = -32
-			goingdown = false
-		else
-			delta = delta + FrameTime()
-			up = -easing.easeIn(delta, 1, 0, 1) * 32 * 2
-		end
-	end
-end)
+local lotmsg
 net.Receive("lot_enter", function()
-	local ply = net.ReadEntity()
-	if ply:IsPlayer() then
-		color = Color(0, 0, 0, 128)
-		text = "Lot owner: " .. ply:Nick()
-		timer.Simple(3, function()
-			goingup = false
-			goingdown = true
-		end)
+	local owner = net.ReadEntity()
+	if owner:IsPlayer() then
+		lotmsg = notification.Add("Lot owned by: " .. owner:Nick(), Color(0, 0, 0), 5)
 	else
-		color = Color(0, 255, 0, 128)
-		text = "This lot is available! Press F2 for options."
+		lotmsg = notification.Add("This lot is available! Press F2 for more options.", Color(0, 255, 0))
 	end
-	goingup = true
-	goingdown = false
 end)
 net.Receive("lot_leave", function()
-	goingdown = true
-	goingup = false
+	notification.Dismiss(lotmsg)
 end)
