@@ -14,14 +14,17 @@ function meta:SetWallet(a)
 		return true
 	end
 end
-function meta:ChargeWallet(a)
+function meta:ChargeWallet(a, text, color)
 	if SERVER then
 		a = tonumber(a)
+		if a == 0 then return end
 		local m = tonumber(self:GetNWInt("wallet"))
 		if m - a < 0 then return false end
 		m = math.floor(m - a)
 		self:SetNWInt("wallet", m)
-		if a > 0 then
+		if text then
+			self:Notify(text, color, 5)
+		elseif a > 0 then
 			self:Notify("You've been charged a fee of $" .. a .. ".", Color(255, 0, 0), 5)
 		else
 			self:Notify("You've been paid $" .. math.abs(a) .. "!", Color(0, 255, 0), 5)
