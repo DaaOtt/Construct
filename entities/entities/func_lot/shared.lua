@@ -30,7 +30,7 @@ function ENT:StartTouch(ent)
 end
 function ENT:EndTouch(ent)
 	print("out", ent, self)
-	self.ents[ent] = false
+	self.ents[ent] = nil
 	if ent:IsPlayer() then
 		net.Start("lot_leave")
 		net.Send(ent)
@@ -50,6 +50,9 @@ function ENT:AddOwner(a)
 end
 function ENT:RemoveOwner(a)
 	self.owners[a] = nil
+end
+function ENT:ClearOwners()
+	self.owners = {}
 end
 function ENT:IsOwner(a)
 	return self.owners[a] or a == self:GetOwner()

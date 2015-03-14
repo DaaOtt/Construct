@@ -106,16 +106,19 @@ end
 
 net.Receive("lot_buy", function(len, ply)
 	local lot
-	for l in pairs(CONSTRUCT.lots) do
+	for l, v in pairs(CONSTRUCT.lots) do
+		PrintTable(l.ents)
 		if l:Contains(ply) then
 			lot = l
 			break
 		end
 	end
+	print(lot)
 	if IsValid(lot) then
 		if IsValid(lot:GetOwner()) then
 			lot:SetOwner(nil)
-			net.Start("lot_open")
+			lot:ClearOwners()
+			net.Start("lot_enter")
 			net.Send(ply)
 		else
 			lot:SetOwner(ply)
@@ -124,7 +127,27 @@ net.Receive("lot_buy", function(len, ply)
 		end
 	end
 end)
+net.Receive("lot_addowner", function(len, ply)
+	local co = net.ReadEntity()
+	print("addowner", ply, co)
+	local lot
+	for l in pairs(CONSTRUCT.lots) do
+		if l:Contains(ply) then
+			lot = l
+			break
+		end
+	end
+	if IsValid(lot) then
+		if IsValid(lot:GetOwner()) then
+			if lot:GetOwner() == ply then
+				lot:AddOwner(co)
+				return
+			end
+		end
+	end
+end)
 util.AddNetworkString("lot_enter")
 util.AddNetworkString("lot_leave")
 util.AddNetworkString("lot_menu")
 util.AddNetworkString("lot_buy")
+util.AddNetworkString("lot_addowner")
