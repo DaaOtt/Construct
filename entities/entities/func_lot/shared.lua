@@ -36,8 +36,8 @@ function ENT:EndTouch(ent)
 		net.Send(ent)
 	elseif ent:GetClass() == "prop_physics" and not ent.removed then
 		if ent:GetNWEntity("owner", Entity(0)):IsPlayer() then
-			ent:Remove()
-			ent:GetNWEntity("owner"):Notify("Your prop was removed because it exited the lot!", Color(255, 0, 0), 5)
+			--ent:Remove()
+			--ent:GetNWEntity("owner"):Notify("Your prop was removed because it exited the lot!", Color(255, 0, 0), 5)
 		end
 	end
 end
