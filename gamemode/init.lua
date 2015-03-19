@@ -116,10 +116,12 @@ net.Receive("lot_buy", function(len, ply)
 	print(lot)
 	if IsValid(lot) then
 		if IsValid(lot:GetOwner()) then
-			lot:SetOwner(nil)
-			lot:ClearOwners()
-			net.Start("lot_enter")
-			net.Send(ply)
+			if lot:GetOwner() == ply then
+				lot:SetOwner(nil)
+				lot:ClearOwners()
+				net.Start("lot_enter")
+				net.Send(ply)
+			end
 		else
 			lot:SetOwner(ply)
 			net.Start("lot_leave")
